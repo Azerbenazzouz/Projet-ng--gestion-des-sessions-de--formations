@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: 'register' , component: RegisterComponent},
   { path: 'formation' , component: FormationComponent},
   { path: 'formation/:search' , component: FormationComponent},
+  { path: 'formation/categorie' , component: FormationComponent},
+  { path: 'formation/categorie/:cat' , component: FormationComponent},
   { path: 'formation/details' , component: FormationComponent},
   { path: 'formation/details/:id' , component: DetailsComponent}
 ];

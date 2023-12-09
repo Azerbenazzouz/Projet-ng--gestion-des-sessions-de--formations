@@ -1,0 +1,9 @@
+/* slider-tabs.component.css */
+.container {
+    max-width: 100%;
+  }
+  
+  .nav-tabs {
+    overflow: hidden;
+  }
+  

@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
+
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FilterComponent } from './filter/filter.component';
 
 @Component({
   selector: 'app-formation',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent,RouterLink],
-  templateUrl: './formation.component.html',
+  imports: [CommonModule,RouterLink,NavbarComponent,FooterComponent,FilterComponent],
+templateUrl: './formation.component.html',
   styleUrl: './formation.component.css'
 })
 export class FormationComponent {

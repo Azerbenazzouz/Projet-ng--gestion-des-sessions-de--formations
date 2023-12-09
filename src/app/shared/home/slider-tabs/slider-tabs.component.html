@@ -1,0 +1,23 @@
+<div class="container mt-3">
+    <div class="d-flex justify-content-center mb-3">
+        <h2 class="text-primary">Nous Catégories</h2>
+    </div>
+    <div class="d-flex overflow-auto justify-content-center" >
+      <div class="grid row" role="tablist">
+        <div class="col-4 col-md-3 mb-3" *ngFor="let tab of tabs; let i = index">
+            <button class="btn {{i== category ? 'btn-primary':'btn-outline-primary'}}" (click)="changeCategory(i)">
+                {{ tab }}
+            </button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="d-flex justify-content-center mb-3">
+    <hr class="border border-primary border-1 opacity-75 w-75 text-center">
+</div>
+
+<div class="container">
+    <div class="row">
+        <app-product-group></app-product-group>
+    </div>
+</div>

@@ -2,13 +2,13 @@
   
   <div class="carousel-inner">
     
-    <div class="carousel-item {{cat.id == categories[0]?.id ? 'active' : ''}}" *ngFor="let cat of categories">
+    <a routerLink="/formation/categorie/{{cat.name}}" class="carousel-item {{cat.id == categories[0].id ? 'active' : ''}}" *ngFor="let cat of categories">
       <img src={{cat.image}} class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5>{{cat.name}}</h5>
         <p>{{cat.description}}</p>
       </div>
-    </div>
+    </a>
 
   </div>
 

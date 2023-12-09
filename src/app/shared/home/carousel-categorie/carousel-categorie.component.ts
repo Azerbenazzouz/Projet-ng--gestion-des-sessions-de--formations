@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ICarouselCategorie } from '../../model/icarousel-categorie';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-carousel-categorie',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './carousel-categorie.component.html',
   styleUrl: './carousel-categorie.component.css'
 })
