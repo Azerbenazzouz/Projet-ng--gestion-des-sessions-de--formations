@@ -11,5 +11,5 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './formation.component.css'
 })
 export class FormationComponent {
-
+  
 }

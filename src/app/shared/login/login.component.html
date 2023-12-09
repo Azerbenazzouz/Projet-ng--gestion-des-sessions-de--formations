@@ -1,1 +1,29 @@
-<p>login works!</p>
+<app-navbar></app-navbar>
+<div class="container d-flex justify-content-center align-items-center login" >
+    <form class="col-12 col-md-6 col-lg-4 bg-body-tertiary p-2 p-sm-4 rounded-3" [formGroup]="loginForm" (submit)="loginSubmit()">
+        <h1 class="text-center">Login</h1>
+        <div class="mb-3 mt-5">
+            <label for="email" class="mb-2">
+                Adress email :
+            </label>
+            <input type="email" class="form-control" id="email" placeholder="foulan.foulani@gmail.com"  formControlName="email">
+            <h6 class="text-danger mt-2" *ngIf="errors.email"> {{errors.email}} </h6>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="mb-2">
+                Mot de passe :
+            </label>
+            <input type="password" class="form-control" id="password" placeholder="********"  formControlName="password">
+            <h6 class="text-danger mt-2" *ngIf="errors.password"> {{errors.password}} </h6>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">
+                Se connecter
+            </button>
+            <a routerLink="/register" class="btn btn-link">
+                J'ai pas de compte
+            </a>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
