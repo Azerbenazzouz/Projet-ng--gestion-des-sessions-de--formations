@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from '@angular/router';
+import { CarouselCategorieComponent } from './carousel-categorie/carousel-categorie.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent,RouterLink],
+  imports: [RouterLink,NavbarComponent,FooterComponent,CarouselCategorieComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

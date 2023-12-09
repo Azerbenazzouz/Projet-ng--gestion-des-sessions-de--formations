@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { IRegister } from '../model/iregister';
+
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
@@ -13,7 +16,7 @@ import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angu
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  errors: any = {
+  errors: IRegister = {
     name: '',
     telephone: '',
     email: '',

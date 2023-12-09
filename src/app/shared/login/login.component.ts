@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+
+import { ILogin } from '../model/ilogin';
+
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
@@ -13,7 +16,7 @@ import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angu
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  errors: any = {
+  errors: ILogin = {
     email: '',
     password: ''
   };
