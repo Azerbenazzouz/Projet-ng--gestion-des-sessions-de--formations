@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CandidatRoutingModule } from './candidat-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    CandidatRoutingModule
   ]
 })
 export class CandidatModule { }
