@@ -1,15 +1,38 @@
 <div class="container-md mt-sm-3 mt-md-5 filter">
     <div class="row filter">
-        <div class="col-lg-3 px-3 mb-3 mb-md-0 border-bottom border-opacity-10 pb-3">
-            <h4 class="pb-1 pb-md-3 border-bottom">Filter</h4>
-            <div class="form-group pb-md-3">
-                <label for="filter" class="mb-2 mb-md-3">Filter par catégorie</label>
-                <select class="form-select" id="filter">
-                    <option value="all">Toutes les catégories</option>
-                    <option value="1">Catégorie 1</option>
-                    <option value="2">Catégorie 2</option>
-                    <option value="3">Catégorie 3</option>
-                </select>
+        <div class="col-lg-3 px-3 mb-3 mb-md-0 pb-3">
+            <div class="d-flex">
+                <h4 class="">Filter</h4>
+                <button class="btn btn-link ms-auto d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="true" aria-controls="filterCollapse">
+                    <i class="bi bi-filter h2 text-dark"></i>
+                </button>
+            </div>
+            <!-- Par Categorie -->
+            <div class="border-top pt-3" id="filterCollapse">
+                <div class="form-group pb-md-3">
+                    <label for="filter" class="mb-2 mb-md-3">Filter par catégorie</label>
+                    <select class="form-select" id="filter">
+                        <option value="all">Toutes les catégories</option>
+                        <option value="1">Catégorie 1</option>
+                        <option value="2">Catégorie 2</option>
+                        <option value="3">Catégorie 3</option>
+                    </select>
+                </div>
+                <!-- Par difficulty -->
+                <div class="form-group pb-md-3">
+                    <label for="filter" class="mb-2 mb-md-3">Filter par difficulté</label>
+                    <select class="form-select" id="filter">
+                        <option value="all">Toutes les difficultés</option>
+                        <option value="beginner">beginner</option>
+                        <option value="intermediate">intermediate</option>
+                        <option value="3">advanced</option>
+                    </select>
+                </div>
+                <!-- Filter Button -->
+                <div class="d-flex justify-content-end justify-content-lg-start">
+                    <button class="btn btn-primary mt-3 mt-md-4" type="button">Filter</button>
+                    <button class="btn btn-outline-primary mt-3 mt-md-4 ms-3" type="button">Reset</button>    
+                </div>
             </div>
         </div>
         <div class="col-12 col-lg-9 px-3">
