@@ -4,7 +4,7 @@
     </div>
     <div class="d-flex overflow-auto justify-content-center" >
       <div class="grid row" role="tablist">
-        <div class="col-4 col-md-3 mb-3" *ngFor="let tab of tabs; let i = index">
+        <div class="col-4 col-md-3 col-lg-2 mb-3" *ngFor="let tab of tabs; let i = index">
             <button class="btn {{i== category ? 'btn-primary':'btn-outline-primary'}}" (click)="changeCategory(i)">
                 {{ tab }}
             </button>
