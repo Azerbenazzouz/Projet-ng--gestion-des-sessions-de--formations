@@ -8,6 +8,8 @@ import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angular/forms';
 
+import { RegisterService } from '../service/register.service';
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -24,7 +26,7 @@ export class RegisterComponent {
     role: ''
   };
 
-  constructor() {}
+  constructor(private RegisterService : RegisterService) {}
 
   ngOnInit(): void {}
 
@@ -38,7 +40,13 @@ export class RegisterComponent {
 
   registerSubmit() {    
     if(this.registerForm.valid){
-      console.log(this.registerForm.value);
+      this.RegisterService.register(
+        this.registerForm.controls.name.value??'',
+        this.registerForm.controls.telephone.value??'',
+        this.registerForm.controls.email.value??'',
+        this.registerForm.controls.password.value??'',
+        this.registerForm.controls.role.value??''
+      );
     }else{
       // name
       if(this.registerForm.controls.name.invalid){
