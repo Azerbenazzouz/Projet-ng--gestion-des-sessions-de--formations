@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { Iproduct } from '../../model/iproduct';
 import { IUser } from '../../model/iuser';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -12,20 +12,20 @@ import { RouterLink } from '@angular/router';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-  @Output() productSelected = new EventEmitter<Iproduct>();
-  product: Iproduct = {
-    title: 'Angular',
-    description: 'Angular is a platform for building mobile and desktop web applications.',
-    image: 'https://angular.io/assets/images/logos/angular/angular.png',
-    hours: 10,
-    date: new Date('2024-05-07'),
-    program: 'https://angular.io/',
-    difficulty: 'beginner',
-    tags: ['angular', 'javascript', 'html', 'css'],
-    categories: ['web', 'mobile', 'desktop'],
-    idFormateur: [1, 2],
-    id: 1
+  @Input() product : Iproduct= {
+    title: '',
+    description: '',
+    image: '',
+    hours: 0,
+    date: new Date(),
+    program: '',
+    difficulty: 'intermediate',
+    tags: [],
+    categories: [],
+    idFormateur: [],
+    id: 0
   };
+
 
   formatuer1 : IUser = {
     name: 'Lewis Hamilton',
@@ -66,10 +66,9 @@ export class ProductComponent {
     return colors[aletoir];
   }
 
-  constructor() { }
+  constructor(private router:Router) { }
 
-  onClick(): void {
-    this.productSelected.emit(this.product);
+  ngOnInit(): void {
   }
   
 }
