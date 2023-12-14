@@ -9,8 +9,10 @@ import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   { path: '' , component: HomeComponent},
+  { path: 'home' , component: HomeComponent},
   { path: 'login' , component: LoginComponent},
   { path: 'register' , component: RegisterComponent},
+  { path: 'register/:etat' , component: RegisterComponent},
   { path: 'formation' , component: FormationComponent},
   { path: 'formation/:search' , component: FormationComponent},
   { path: 'formation/categorie' , component: FormationComponent},

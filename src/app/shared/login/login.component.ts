@@ -7,6 +7,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
     email: '',
     password: ''
   };
-  constructor() {}
+  constructor(private LoginService : LoginService) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +32,9 @@ export class LoginComponent {
 
   loginSubmit() {    
     if(this.loginForm.valid){
-      console.log(this.loginForm.value);
+      this.LoginService.login(this.loginForm.controls.email.value??'',this.loginForm.controls.password.value??'').catch((err)=>{
+        this.errors.password = 'Email ou mot de passe incorrect';
+      });
     }else{
       if(this.loginForm.controls.email.invalid){
         this.errors.email = 'Inserer un email valide';

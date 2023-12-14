@@ -9,11 +9,12 @@ import { RouterLink } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { RegisterService } from '../service/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule,NavbarComponent,FooterComponent,RouterLink,ReactiveFormsModule],
+  imports: [CommonModule,NavbarComponent,FooterComponent,RouterLink,ReactiveFormsModule,HttpClientModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
@@ -29,7 +30,7 @@ export class RegisterComponent {
   constructor(private RegisterService : RegisterService) {}
 
   ngOnInit(): void {}
-
+  
   registerForm = new FormGroup({
     name : new FormControl('',Validators.required),
     telephone: new FormControl('',{validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8) , Validators.pattern("^[0-9]*$")]}),
@@ -40,13 +41,20 @@ export class RegisterComponent {
 
   registerSubmit() {    
     if(this.registerForm.valid){
-      this.RegisterService.register(
-        this.registerForm.controls.name.value??'',
-        this.registerForm.controls.telephone.value??'',
-        this.registerForm.controls.email.value??'',
-        this.registerForm.controls.password.value??'',
-        this.registerForm.controls.role.value??''
-      );
+      this.RegisterService.valideEmail(this.registerForm.controls.email.value??'').then(isValid => {
+        if(isValid){
+          this.RegisterService.register(
+            this.registerForm.controls.name.value??'',
+            this.registerForm.controls.telephone.value??'',
+            this.registerForm.controls.email.value??'',
+            this.registerForm.controls.password.value??'',
+            this.registerForm.controls.role.value??''
+          )
+        }else{
+          this.errors.email = 'Email deja existant';
+        }
+      })
+
     }else{
       // name
       if(this.registerForm.controls.name.invalid){
@@ -78,7 +86,6 @@ export class RegisterComponent {
       }else{
         this.errors.role = '';
       }
-
     }
   }
 }
