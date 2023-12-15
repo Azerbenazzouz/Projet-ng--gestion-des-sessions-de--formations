@@ -22,7 +22,7 @@ export class LoginService {
         }, this.options).subscribe({
         next : (result : LoginDto) => {
           if(result.accessToken){
-            localStorage.setItem('token',result.accessToken);
+            localStorage.setItem('accessToken',result.accessToken);
             localStorage.setItem('role',result.user.role);
             this.router.navigateByUrl('/home');
             this.router.navigate(['home']);
@@ -36,6 +36,10 @@ export class LoginService {
         }
       });
     });
+  }
+
+  isAuthenticated = () : boolean => {
+    return localStorage.getItem('accessToken') != null;
   }
 
 }

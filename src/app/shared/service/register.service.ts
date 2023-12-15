@@ -64,8 +64,8 @@ export class RegisterService {
     ).subscribe({
       next :
         (result) => {
-          window.localStorage.setItem('accessToken', result.accessToken);
-          // this.router.navigate(['login']);
+          // window.localStorage.setItem('accessToken', result.accessToken);
+          this.router.navigate(['login']);
         }
       });
   }

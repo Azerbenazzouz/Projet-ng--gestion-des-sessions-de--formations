@@ -6,13 +6,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormationComponent } from './formation/formation.component';
 import { DetailsComponent } from './details/details.component';
+// import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '' , component: HomeComponent},
   { path: 'home' , component: HomeComponent},
-  { path: 'login' , component: LoginComponent},
+  { path: 'login' , component: LoginComponent },
   { path: 'register' , component: RegisterComponent},
-  { path: 'register/:etat' , component: RegisterComponent},
   { path: 'formation' , component: FormationComponent},
   { path: 'formation/:search' , component: FormationComponent},
   { path: 'formation/categorie' , component: FormationComponent},
