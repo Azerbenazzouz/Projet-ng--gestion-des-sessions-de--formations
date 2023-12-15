@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NavbarComponent {
   isAuth : boolean = false;
+  role : string = "";
   constructor( private route : Router ) {}
   searchForm = new FormGroup({
     search: new FormControl('')
@@ -19,6 +20,8 @@ export class NavbarComponent {
   ngOnInit(): void {
     if(localStorage.getItem('accessToken')) {
       this.isAuth = true;
+      this.role = localStorage.getItem('role')??'';
+
     }
   }
 
@@ -38,11 +41,5 @@ export class NavbarComponent {
     this.route.navigate(['/login']);
   }
 
-  role() {
-    return localStorage.getItem('role');
-  }
 
-  // isAuth() {
-  //   return localStorage.getItem('accessToken');
-  // }
 }

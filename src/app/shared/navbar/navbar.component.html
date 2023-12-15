@@ -14,20 +14,27 @@
         </li>
       </ul>
       <form class="d-flex" role="search" [formGroup]="searchForm" (submit)="searchSubmit()">
+        <!-- Search -->
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" formControlName="search">
+        <!-- Ajouter Formation -->
+        <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-plus-lg"></i></a>
+        <!-- Les Formation du formateur -->
+        <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-book"></i></a>
+        <!-- Les Formation suivie par le candidat -->
+        <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='candidat'"><i class="bi bi-bookmark-check-fill"></i></a>
+        <!-- Login et SignUp -->
         <button type="button" routerLink="/login" class="btn btn-outline-success me-2" *ngIf="!isAuth">Login</button>
         <button type="button" routerLink="/register" class="btn btn-warning" *ngIf="!isAuth">Register</button>
-        <button type="button" (click)="logout()" class="btn btn-warning" *ngIf="isAuth">Déconnecter</button>
-        <div class="dropdown text-end">
+        <!-- Profile , Settings et deconnecter -->
+        <div class="dropdown text-end" *ngIf="isAuth">
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+            <img src="https://github.com/mdo.png" alt="mdo" width="38" height="38" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" (click)="logout()">Déconnecter</a></li>
           </ul>
         </div>
       </form>
