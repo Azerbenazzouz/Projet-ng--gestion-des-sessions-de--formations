@@ -23,6 +23,7 @@ export class ProductComponent {
     tags: [],
     categories: [],
     idFormateur: [],
+    idCondidat: [],
     id: 0
   };
 

@@ -11,32 +11,28 @@
             <div class="border-top pt-3" id="filterCollapse">
                 <div class="form-group pb-md-3">
                     <label for="filter" class="mb-2 mb-md-3">Filter par catégorie</label>
-                    <select class="form-select" id="filter">
+                    <select class="form-select" id="filter" [(ngModel)]="categorie">
                         <option value="all">Toutes les catégories</option>
-                        <option value="1">Catégorie 1</option>
-                        <option value="2">Catégorie 2</option>
-                        <option value="3">Catégorie 3</option>
+                        <option [ngValue]="cat" *ngFor="let cat of categories">{{cat}}</option>
                     </select>
                 </div>
                 <!-- Par difficulty -->
                 <div class="form-group pb-md-3">
                     <label for="filter" class="mb-2 mb-md-3">Filter par difficulté</label>
-                    <select class="form-select" id="filter">
+                    <select class="form-select" id="filter" [(ngModel)]="difficultie">
                         <option value="all">Toutes les difficultés</option>
-                        <option value="beginner">beginner</option>
-                        <option value="intermediate">intermediate</option>
-                        <option value="3">advanced</option>
+                        <option [ngValue]="dif" *ngFor="let dif of difficulties">{{dif}}</option>
                     </select>
                 </div>
                 <!-- Filter Button -->
                 <div class="d-flex justify-content-end justify-content-lg-start">
-                    <button class="btn btn-primary mt-3 mt-md-4" type="button">Filter</button>
-                    <button class="btn btn-outline-primary mt-3 mt-md-4 ms-3" type="button">Reset</button>    
+                    <button class="btn btn-primary mt-3 mt-md-4" type="button" (click)="filter()">Filter</button>
+                    <button class="btn btn-outline-primary mt-3 mt-md-4 ms-3" type="button" (click)="resitFilter()">Reset</button>    
                 </div>
             </div>
         </div>
         <div class="col-12 col-lg-9 px-3">
-            <app-product-group></app-product-group>
+            <app-product-group [product]="product" ></app-product-group>
         </div>
     </div>
 </div>

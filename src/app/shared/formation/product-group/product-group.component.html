@@ -10,6 +10,5 @@
   <div class="d-flex my-5 py-5 h1" *ngIf="product.length==0">
     Pas de resultat 🥺
   </div>
-  <button class="btn btn-primary float-end">Tous Les Formations</button>
+  <button class="btn btn-primary float-end" routerLink="/formation" *ngIf="this.location != '/formation'">Tous Les Formations</button>
 </div>
-

@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
+  motCles : string[] = ["angular","javascript","html","css","azer"];
+  
   isAuth : boolean = false;
   role : string = "";
   constructor( private route : Router ) {}
@@ -24,10 +26,8 @@ export class NavbarComponent {
 
     }
   }
-
-  searchSubmit() {
-    console.log('Please enter a search term');
-    
+  
+  searchSubmit() {    
     if(this.searchForm.value.search == '') {
       this.route.navigate(['/formation']);
     }else {

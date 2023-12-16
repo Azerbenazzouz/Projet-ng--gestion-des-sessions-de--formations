@@ -4,8 +4,8 @@
     </div>
     <div class="d-flex overflow-auto justify-content-center" >
       <div class="grid row" role="tablist">
-        <div class="col-4 col-md-3 col-lg-2 mb-3" *ngFor="let tab of tabs; let i = index">
-            <button class="btn {{i== category ? 'btn-primary':'btn-outline-primary'}}" (click)="changeCategory(i)">
+        <div class="col-4 col-md-3 mb-3" *ngFor="let tab of tabs; let i = index">
+            <button class="btn {{i== category ? 'btn-primary':'btn-outline-primary'}}" (click)="filterCategory(i)">
                 {{ tab }}
             </button>
         </div>
@@ -18,6 +18,6 @@
 
 <div class="container">
     <div class="row">
-        <app-product-group></app-product-group>
+        <app-product-group [product]="product"></app-product-group>
     </div>
 </div>

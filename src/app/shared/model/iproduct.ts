@@ -10,5 +10,6 @@ export interface Iproduct {
     tags: string[];
     categories: string[];
     idFormateur: number[];
+    idCondidat: number[];
     id: number;
 }
