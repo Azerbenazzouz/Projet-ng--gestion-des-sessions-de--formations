@@ -146,5 +146,7 @@ export class FilterComponent {
     }else{
       this.resitFilter()
     }
+    this.categories = this.categoriesGet();
+    this.difficulties = this.difficultiesGet();
   }
 }
