@@ -13,3 +13,4 @@ export interface Iproduct {
     idCondidat: number[];
     id: number;
 }
+
