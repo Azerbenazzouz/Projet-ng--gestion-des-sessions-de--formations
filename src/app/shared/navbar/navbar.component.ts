@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output , EventEmitter } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -14,6 +15,7 @@ export class NavbarComponent {
   
   isAuth : boolean = false;
   role : string = "";
+
   constructor( private route : Router ) {}
   searchForm = new FormGroup({
     search: new FormControl('')

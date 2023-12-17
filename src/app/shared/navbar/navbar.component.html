@@ -14,13 +14,13 @@
         </li>
       </ul>
       <div class="d-flex" role="search" [formGroup]="searchForm" (change)="searchSubmit()">
-        <!-- Search -->
+
         <input class="form-control me-2" type="search" placeholder="Search" list="datalistOptions" aria-label="Search" formControlName="search">
+        
         <datalist id="datalistOptions">
           <option value="{{m}}" *ngFor="let m of motCles">
         </datalist>
-        <!-- Search Button -->
-        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+
       </div>
       <!-- Ajouter Formation -->
       <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-plus-lg"></i></a>

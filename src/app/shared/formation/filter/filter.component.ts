@@ -13,11 +13,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './filter.component.css'
 })
 export class FilterComponent {
+
   categorie: string = "all";
   difficultie: string = "all";
   search : string = "";
 
-
+  
   categories: string[] = [];
   difficulties: string[] = [];
 
@@ -68,22 +69,33 @@ export class FilterComponent {
   product: Iproduct[] = [];
 
   constructor( private route: ActivatedRoute) { 
-    if(this.search != ""){
-      this.products = this.products.filter(p => p.tags.includes(this.search)); 
-    }
     this.product = this.products;
-    
+    this.route.params.subscribe(params => {
+      this.search = params['search'];
+
+      if(this.search != undefined){
+        this.filter();
+      }else{
+        this.product = this.products;
+      }
+    });
+    this.categories = this.categoriesGet();
+    this.difficulties = this.difficultiesGet();
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.search = params['search'];
+
+      if(this.search != undefined){
+        this.filter();
+      }else{
+        this.product = this.products;
+      }
+    });
     this.categories = this.categoriesGet();
     this.difficulties = this.difficultiesGet();
-    this.search = this.route.snapshot.paramMap.get('search')??'';
-    if(this.search != ""){
-      this.products = this.products.filter(p => p.tags.includes(this.search)); 
-    }
   }
-
 
   categoriesGet(){
     let categorys : string[] = [];
@@ -107,18 +119,30 @@ export class FilterComponent {
     return difficulties;
   }
 
-
   resitFilter(){
     this.product = this.products;
+    this.route.params.subscribe(params => {
+      this.search = params['search'];
+
+      if(this.search != undefined){
+        this.filter();
+      }else{
+        this.product = this.products;
+      }
+    });
+    this.categories = this.categoriesGet();
+    this.difficulties = this.difficultiesGet();
   }
 
   filter(){
-    if(this.difficultie != "all" && this.categorie != "all") {
-      this.product = this.products.filter(p => p.difficulty.includes(this.difficultie) && p.categories.includes(this.categorie));
+    if(this.difficultie != "all" && this.categorie != "all" && this.search != undefined) {
+      this.product = this.products.filter(p => p.difficulty.includes(this.difficultie) && p.categories.includes(this.categorie) && p.tags.includes(this.search));
     }else if(this.difficultie != "all"){
       this.product = this.products.filter(p => p.difficulty.includes(this.difficultie));
     }else if(this.categorie != "all"){
       this.product = this.products.filter(p => p.categories.includes(this.categorie));
+    }else if(this.search != undefined ){
+      this.product = this.products.filter(p => p.tags.includes(this.search))
     }else{
       this.resitFilter()
     }

@@ -15,5 +15,9 @@ templateUrl: './formation.component.html',
   styleUrl: './formation.component.css'
 })
 export class FormationComponent {
-  
+  search: string = '';
+  addSearch(search: string) {
+    this.search = search;
+    console.log(this.search);
+  }
 }
