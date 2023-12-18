@@ -34,6 +34,7 @@ export class ProductComponent {
     email: "mouhamed@gmail.com",
     password: "123456",
     role: "formateur",
+
     id: 1
   }
 
