@@ -10,7 +10,7 @@
                     <h1>Titre De Formation </h1>
                     <small class="text-secondary ms-2">(3h)</small>
                 </div>
-                <div>
+                <div *ngIf="Auth()">
                     <a href="" class="btn btn-success"><i class="bi bi-plus"> S'inscrire</i></a>
                 </div>
             </div>
