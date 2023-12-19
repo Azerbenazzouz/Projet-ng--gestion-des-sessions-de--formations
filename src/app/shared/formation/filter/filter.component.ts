@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ProductGroupComponent } from '../product-group/product-group.component';
-import { Iproduct } from '../../model/iproduct';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
+import { ProductGroupComponent } from '../product-group/product-group.component';
+
+import { FormationService } from '../../service/formation.service';
+import { Iproduct } from '../../model/iproduct';
 
 @Component({
   selector: 'app-filter',
@@ -22,79 +25,27 @@ export class FilterComponent {
   categories: string[] = [];
   difficulties: string[] = [];
 
-
-  products: Iproduct[] = [{
-      title: 'Angular',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: new Date('2024-05-07'),
-      program: 'https://angular.io/',
-      difficulty: 'beginner',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'desktop'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },{
-      title: 'Angular2',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: new Date('2024-05-07'),
-      program: 'https://angular.io/',
-      difficulty: 'advanced',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'desktop'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },
-    {
-      title: 'Angular3',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: new Date('2024-05-07'),
-      program: 'https://angular.io/',
-      difficulty: 'intermediate',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'desktop'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },
-  ];
-
+  products: Iproduct[] = [];
   product: Iproduct[] = [];
 
-  constructor( private route: ActivatedRoute) { 
-    this.product = this.products;
-    this.route.params.subscribe(params => {
-      this.search = params['search'];
-
-      if(this.search != undefined){
-        this.filter();
-      }else{
-        this.product = this.products;
-      }
-    });
-    this.categories = this.categoriesGet();
-    this.difficulties = this.difficultiesGet();
-  }
-
+  constructor(private route: ActivatedRoute, private formation: FormationService) { }
+  
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.search = params['search'];
 
-      if(this.search != undefined){
-        this.filter();
-      }else{
-        this.product = this.products;
-      }
+    this.formation.getAll().subscribe((data : Iproduct[]) => {
+      this.products = data;
+      this.product = data;
+
+      this.route.params.subscribe(params => {
+        this.search = params['search'];
+        if(this.search != undefined){
+          this.filter();
+        }
+      });
+      
+      this.categories = this.categoriesGet();
+      this.difficulties = this.difficultiesGet();
     });
-    this.categories = this.categoriesGet();
-    this.difficulties = this.difficultiesGet();
   }
 
   categoriesGet(){
@@ -146,7 +97,9 @@ export class FilterComponent {
     }else{
       this.resitFilter()
     }
+
     this.categories = this.categoriesGet();
     this.difficulties = this.difficultiesGet();
   }
+
 }

@@ -5,5 +5,6 @@ export interface IUser {
     password: string;
     role: string;
     img?:string;
+    idSavedFormation?: number[];
     id: number;
 }

@@ -17,7 +17,7 @@ export class ProductComponent {
     description: '',
     image: '',
     hours: 0,
-    date: new Date(),
+    date: "",
     program: '',
     difficulty: 'intermediate',
     tags: [],

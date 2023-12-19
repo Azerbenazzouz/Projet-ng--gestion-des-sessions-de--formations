@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Iproduct } from './../model/iproduct';
 
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { FormationService } from '../service/formation.service';
 
 @Component({
   selector: 'app-details',
@@ -15,8 +16,14 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class DetailsComponent {  
   id : number;
-  constructor( private route : ActivatedRoute) {
+  constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService ) {
     this.id = this.route.snapshot.params['id'];
+    const product = this.formation.getOne(this.id);
+    if(product){
+      this.product = product;
+    }else{
+      this.router.navigate(['/formation']);
+    }
    }
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
@@ -27,7 +34,7 @@ export class DetailsComponent {
     description: 'Angular is a platform for building mobile and desktop web applications.',
     image: 'https://picsum.photos/1000',
     hours: 10,
-    date: new Date('2024-05-07 14:01'),
+    date: "2024-05-07 14:01",
     program: 'https://angular.io/',
     difficulty: 'beginner',
     tags: ['angular', 'javascript', 'html', 'css'],

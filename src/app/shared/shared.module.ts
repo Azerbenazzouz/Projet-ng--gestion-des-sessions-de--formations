@@ -7,11 +7,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './service/register.service';
 import { LoginService } from './service/login.service';
+import { FormationService } from './service/formation.service';
 
 
 @NgModule({
   declarations: [],
-  providers: [RegisterService,LoginService],
+  providers: [RegisterService,LoginService,FormationService],
   imports: [
     CommonModule,
     SharedRoutingModule,

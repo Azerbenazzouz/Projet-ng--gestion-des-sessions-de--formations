@@ -4,7 +4,7 @@ export interface Iproduct {
     description: string;
     image: string;
     hours: number;
-    date: Date;
+    date: string;
     program: string;
     difficulty: 'beginner' | 'intermediate' | 'advanced';
     tags: string[];
