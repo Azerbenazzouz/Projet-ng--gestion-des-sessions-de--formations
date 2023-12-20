@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductGroupComponent } from '../../formation/product-group/product-group.component';
 import { Iproduct } from '../../model/iproduct';
+import { FormationService } from '../../service/formation.service';
 
 @Component({
   selector: 'app-slider-tabs',
@@ -13,53 +14,17 @@ import { Iproduct } from '../../model/iproduct';
 export class SliderTabsComponent {
   tabs : string[]= [];
   category : number = 0;
-  products: Iproduct[] = [{
-      title: 'Angular',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: "2024-05-07 14:01",
-      program: 'https://angular.io/',
-      difficulty: 'beginner',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'desktop'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },{
-      title: 'Angular2',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: "2024-05-07 14:01",
-      program: 'https://angular.io/',
-      difficulty: 'advanced',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'desktop'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },
-    {
-      title: 'Angular3',
-      description: 'Angular is a platform for building mobile and desktop web applications.',
-      image: 'https://angular.io/assets/images/logos/angular/angular.png',
-      hours: 10,
-      date: "2024-05-07 14:01",
-      program: 'https://angular.io/',
-      difficulty: 'intermediate',
-      tags: ['angular', 'javascript', 'html', 'css'],
-      categories: ['web', 'mobile', 'dvd0' ,'angular'],
-      idFormateur: [1, 2],
-      idCondidat: [1, 2],
-      id: 1
-    },
-  ];
-  product : Iproduct[] = [];
-  constructor() {
-    this.product = this.products;
-  }
 
+  products: Iproduct[] = [];
+  product : Iproduct[] = [];
+  constructor(private formation: FormationService ) {
+    this.formation.getAll().subscribe((data : Iproduct[]) => {
+      this.products = data;
+      this.product = data;
+      this.tabs = this.categorys();
+    });
+
+  }
 
   categorys(){
     let categorys : string[] = [];

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input } from '@angular/core';
 import { Iproduct } from '../../model/iproduct';
 import { IUser } from '../../model/iuser';
-import { Router, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -68,7 +68,7 @@ export class ProductComponent {
     return colors[aletoir];
   }
 
-  constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

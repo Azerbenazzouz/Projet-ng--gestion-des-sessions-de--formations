@@ -6,6 +6,7 @@ import { Iproduct } from './../model/iproduct';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormationService } from '../service/formation.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-details',
@@ -16,7 +17,7 @@ import { FormationService } from '../service/formation.service';
 })
 export class DetailsComponent {  
   id : number;
-  constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService ) {
+  constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService , private user: UserService) {
     this.id = this.route.snapshot.params['id'];
     const product = this.formation.getOne(this.id);
     if(product){
@@ -46,6 +47,11 @@ export class DetailsComponent {
   
   Auth = ()=>{
     return window.localStorage.getItem("accessToken") ? true : false;
+  }
+
+  getFormateurName (id : number){
+    // this.user.getAll();
+    return (this.user.getUserById(id)?.name)??"nom indisponible";
   }
   
 }

@@ -6,13 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormationComponent } from './formation/formation.component';
 import { DetailsComponent } from './details/details.component';
-// import { authGuard } from './guard/auth.guard';
+import { authGuard } from './guard/auth.guard';
 
+// , canActivate : [!authGuard]
 const routes: Routes = [
   { path: '' , component: HomeComponent},
   { path: 'home' , component: HomeComponent},
-  { path: 'login' , component: LoginComponent },
-  { path: 'register' , component: RegisterComponent},
+  { path: 'login' , component: LoginComponent},
+  { path: 'register' , component: RegisterComponent },
   { path: 'formation' , component: FormationComponent},
   { path: 'formation/:search' , component: FormationComponent},
   { path: 'formation/categorie' , component: FormationComponent},

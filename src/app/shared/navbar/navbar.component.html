@@ -27,7 +27,7 @@
       <!-- Les Formation du formateur -->
       <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-book"></i></a>
       <!-- Les Formation suivie par le candidat -->
-      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='candidat'"><i class="bi bi-bookmark-check-fill"></i></a>
+      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='candidat'" routerLink="/condidat/formationinscrit"><i class="bi bi-bookmark-check-fill"></i></a>
       <!-- Login et SignUp -->
       <button type="button" routerLink="/login" class="btn btn-outline-success me-2" *ngIf="!isAuth">Login</button>
       <button type="button" routerLink="/register" class="btn btn-warning" *ngIf="!isAuth">Register</button>

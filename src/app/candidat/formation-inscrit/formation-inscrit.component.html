@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <h1 class="text-center">Formation inscrit</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Organisme</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let formation of formations">
+                <td>{{ formation.titre }}</td>
+                <td>{{ formation.organisme }}</td>
+                <td>{{ formation.date_debut }}</td>
+                <td>{{ formation.date_fin }}</td>
+                <td>{{ formation.statut }}</td>
+                <td>
+                <!-- <a [routerLink]="['/candidat/formation-inscrit', formation.id]">Voir</a> -->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
