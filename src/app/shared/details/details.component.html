@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto d-block">
-            <img src={{product.image}} alt={{product.title}} srcset="" class="img-fluid img-thumbnail " >
+            <img src={{product.image}} alt={{product.title}} class="img-fluid img-thumbnail w-100" >
         </div>
         <div class="col-md-6">
             <div class="d-flex justify-content-between align-items-center">
@@ -15,16 +15,17 @@
                 </div>
             </div>
             <b class="text-success py-0 my-0">{{product.difficulty}}</b>
-            <div class="d-flex py-0 my-0">
+            <div class="d-flex py-0 mt-3">
                 <p class="text-secondary">Par : </p>
                 <ul class="list-unstyled ms-2 py-0 my-0">
-                    <li>Nom Formateur 1</li>
-                    <li>Nom Formateur 2</li>
+                    <li *ngFor="let f of product.idFormateur">{{getFormateurName(f)}}</li>
                 </ul>
             </div>
-            <b class="">Date de formation : <span class="text-danger">{{product.date}}</span></b>
+            <b class="mt-3">Date de formation : <span class="text-danger">{{product.date}}</span></b>
             <p>{{product.description}}</p>
-
+            <div class="d-flex justify-content-end my-3">
+                <a href="{{product.program}}" target="_blank" class="btn btn-warning end"><i class="bi bi-file-earmark-pdf"></i> Program</a>
+            </div>
             <div class="row">
                 <div class="col-6">
                     <h4>Tags</h4>

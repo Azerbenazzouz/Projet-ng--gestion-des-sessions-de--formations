@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FormationService {
-  private formation : Iproduct[] = [];
+  private formations : Iproduct[] = [];
+
   options = {headers : new HttpHeaders(
     {'content-type' : "application/json"}
   )}
@@ -20,18 +21,18 @@ export class FormationService {
   getAll (): Observable<Iproduct[]>{
     return this.http.get(this.url).pipe(
       map((data : any) => {
-        this.formation = [];
-        data.forEach((element : any) => {
-          this.formation.push(element);
+        this.formations = [];
+        data.forEach((element : Iproduct) => {
+          this.formations.push(element);
         });
-        return [...this.formation];
+        return [...this.formations];
       })
     );
   }
 
   getOne (id : number): Iproduct | undefined{
     this.getAll();
-    return this.formation.find(formation => formation.id == id);
+    return this.formations.find(formation => formation.id == id);
   }
 
 
