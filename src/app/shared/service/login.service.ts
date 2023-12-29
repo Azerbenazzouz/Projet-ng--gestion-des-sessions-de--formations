@@ -24,6 +24,7 @@ export class LoginService {
           if(result.accessToken){
             localStorage.setItem('accessToken',result.accessToken);
             localStorage.setItem('role',result.user.role);
+            localStorage.setItem('id',result.user.id.toString());
             this.router.navigateByUrl('/home');
             this.router.navigate(['home']);
             resolve(result);

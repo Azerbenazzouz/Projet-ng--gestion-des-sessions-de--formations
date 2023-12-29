@@ -13,7 +13,9 @@ export class FormationService {
   options = {headers : new HttpHeaders(
     {'content-type' : "application/json"}
   )}
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient) { 
+    this.getAll ()
+  }
 
   url : string = "http://localhost:3000/formation";
 
@@ -31,9 +33,16 @@ export class FormationService {
   }
 
   getOne (id : number): Iproduct | undefined{
-    this.getAll();
     return this.formations.find(formation => formation.id == id);
   }
 
+  getByIds(idList : number[] | undefined):Iproduct[] | undefined{
+    let matchingFormations : Iproduct[] | undefined;
+    if(idList){
+       matchingFormations = this.formations.filter(formation => idList.includes(formation.id))
+      if(matchingFormations.length == 0) return undefined;
+    }
+    return matchingFormations;
+  }
 
 }

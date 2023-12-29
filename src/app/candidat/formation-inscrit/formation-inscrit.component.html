@@ -9,26 +9,36 @@
         <div class="col-md-12">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th>Titre</th>
-                <th>Organisme</th>
-                <th>Date de début</th>
-                <th>Date de fin</th>
-                <th>Statut</th>
-                <th>Actions</th>
-            </tr>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Difficulty</th>
+                    <th>Formateur 1</th>
+                    <th>Formateur 2</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let formation of formations">
-                <td>{{ formation.titre }}</td>
-                <td>{{ formation.organisme }}</td>
-                <td>{{ formation.date_debut }}</td>
-                <td>{{ formation.date_fin }}</td>
-                <td>{{ formation.statut }}</td>
-                <td>
-                <!-- <a [routerLink]="['/candidat/formation-inscrit', formation.id]">Voir</a> -->
-                </td>
-            </tr>
+                <tr *ngFor="let formation of formations" class="fs-6 fw-semibold">
+                    <td>{{ formation.title }}</td>
+                    <td>{{ formation.date }}</td>
+                    <td>{{ formation.difficulty }}</td>
+                    <td>{{ formation.idFormateur[0]??"" }}</td>
+                    <td>{{ formation.idFormateur[1]??"" }}</td>
+                    <td>
+                        <a routerLink="/formation/details/formation.id" class="btn btn-success">Voir</a>
+                    </td>
+                </tr>
+                <tr class="fs-6 fw-semibold">
+                    <td> formation.titre</td>
+                    <td>formation.date</td>
+                    <td>formation.difficulty</td>
+                    <td>formation.date_fin</td>
+                    <td>formation.statut</td>
+                    <td>
+                        <a routerLink="/formation/details/1" class="btn btn-success">Voir</a>
+                    </td>
+                </tr>
             </tbody>
         </table>
         </div>

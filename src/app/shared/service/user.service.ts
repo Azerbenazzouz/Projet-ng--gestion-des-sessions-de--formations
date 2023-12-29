@@ -27,20 +27,17 @@ export class UserService {
 
   url : string = "http://localhost:3000/users";
 
-  // getAll (): void{
-  //   this.http.get<IUser[]>(this.url,this.options).subscribe({
-  //     next : (data : any) =>{
-  //       this.users = [];
-  //       data.forEach((element : IUser) => {
-  //         this.users.push(element);
-  //       });
-  //     }
-  //   })
-
-  // }
-
   getUserById (id : number): IUser | undefined{
-    // this.getAll();
     return this.users.find(user => user.id == id);
+  }
+
+  getAllSavedFormationId(id : number) :  number[] | undefined{
+    let user = this.getUserById(id);
+    console.log(user)
+    if(!user){
+      return undefined;
+    }else{
+      return user.idSavedFormation;
+    }
   }
 }
