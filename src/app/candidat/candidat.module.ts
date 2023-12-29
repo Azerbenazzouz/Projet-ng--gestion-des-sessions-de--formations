@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CandidatRoutingModule } from './candidat-routing.module';
 import { UserService } from '../shared/service/user.service';
 import { FormationService } from '../shared/service/formation.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { FormationService } from '../shared/service/formation.service';
   providers: [FormationService,UserService],
   imports: [
     CommonModule,
-    CandidatRoutingModule
+    CandidatRoutingModule,
+    HttpClientModule
   ]
 })
 export class CandidatModule { }
