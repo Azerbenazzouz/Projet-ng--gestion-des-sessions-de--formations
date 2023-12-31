@@ -13,6 +13,7 @@ export class FormationService {
   options = {headers : new HttpHeaders(
     {'content-type' : "application/json"}
   )}
+  
   constructor(private http : HttpClient) { 
     this.getAll ()
   }
@@ -36,13 +37,34 @@ export class FormationService {
     return this.formations.find(formation => formation.id == id);
   }
 
-  getByIds(idList : number[] | undefined):Iproduct[] | undefined{
-    let matchingFormations : Iproduct[] | undefined;
-    if(idList){
-       matchingFormations = this.formations.filter(formation => idList.includes(formation.id))
-      if(matchingFormations.length == 0) return undefined;
-    }
-    return matchingFormations;
+  getByIds (idList : number[] | undefined): Observable<Iproduct[]>{
+    return this.http.get(this.url).pipe(
+      map((data : any) => {
+        this.formations = [];
+        data.forEach((element : Iproduct) => {
+          this.formations.push(element);
+        });
+        if(idList){
+          return [...this.formations.filter(formation => idList.includes(formation.id))];
+        }else{
+          return [];
+        }
+      })
+    );
   }
 
+  userAddFormation (id : number, idFormation : number){
+    console.log(idFormation)
+    // let formation = this.getOne(idFormation);
+
+    // if(!formation?.idCondidat.includes(id)){
+    //   formation?.idCondidat.push(id);
+    // }
+
+    // this.http.put(this.url + '/' + idFormation, {"idCondidat":[formation?.idCondidat]}, this.options).subscribe({
+    //   next : (data : any) =>{
+    //     console.log(data)
+    //   }
+    // })
+  }
 }

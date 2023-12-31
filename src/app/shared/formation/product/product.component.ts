@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input } from '@angular/core';
 import { Iproduct } from '../../model/iproduct';
 import { IUser } from '../../model/iuser';
 import {  RouterLink } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-product',
@@ -27,33 +28,11 @@ export class ProductComponent {
     id: 0
   };
 
-
-  formatuer1 : IUser = {
-    name: 'Lewis Hamilton',
-    telephone: '0606060606',
-    email: "mouhamed@gmail.com",
-    password: "123456",
-    role: "formateur",
-
-    id: 1
-  }
-
-  formatuer2 : IUser = {
-    name: 'Sebastian Vettel',
-    telephone: '0606060606',
-    email: "ali@gmail.com",
-    password: "123456",
-    role: "formateur",
-    id: 2
-  }
-
-  getUserById(id: number): IUser {
-    if(id == 1){
-      return this.formatuer1;
-    }else{
-      return this.formatuer2;
-    }
+  getUserById(id: number): String {
+    let user =this.user.getUserById(id);
+    return user ? user.name : "nom indisponible";
   } 
+
   bgDifficultyColor (){
     switch(this.product.difficulty){
       case 'beginner': return 'border-success';
@@ -68,9 +47,11 @@ export class ProductComponent {
     return colors[aletoir];
   }
 
-  constructor() { }
+  constructor(private user : UserService) { }
 
   ngOnInit(): void {
   }
+
+  
   
 }

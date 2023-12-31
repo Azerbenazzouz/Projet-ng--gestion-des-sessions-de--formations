@@ -23,20 +23,10 @@
                     <td>{{ formation.title }}</td>
                     <td>{{ formation.date }}</td>
                     <td>{{ formation.difficulty }}</td>
-                    <td>{{ formation.idFormateur[0]??"" }}</td>
-                    <td>{{ formation.idFormateur[1]??"" }}</td>
+                    <td>{{ getFormateurName(formation.idFormateur[0]) }}</td>
+                    <td>{{ getFormateurName(formation.idFormateur[1]) }}</td>
                     <td>
-                        <a routerLink="/formation/details/formation.id" class="btn btn-success">Voir</a>
-                    </td>
-                </tr>
-                <tr class="fs-6 fw-semibold">
-                    <td> formation.titre</td>
-                    <td>formation.date</td>
-                    <td>formation.difficulty</td>
-                    <td>formation.date_fin</td>
-                    <td>formation.statut</td>
-                    <td>
-                        <a routerLink="/formation/details/1" class="btn btn-success">Voir</a>
+                        <a routerLink="/formation/details/{{formation.id}}" class="btn btn-success">Voir</a>
                     </td>
                 </tr>
             </tbody>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RegisterDTO } from '../model/register-dto';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class RegisterService {
   
   url : string = "http://localhost:3000/users/signup";
   
-  constructor(private http : HttpClient, private router:Router) { }
+  constructor(private http : HttpClient, private router:Router,private user : UserService) { }
 
   // valideEmail = async(email : string)=>{
   //   let res: boolean = true;
@@ -64,6 +65,7 @@ export class RegisterService {
     ).subscribe({
       next :
         (result) => {
+          console.log(result);
           // window.localStorage.setItem('accessToken', result.accessToken);
           this.router.navigate(['login']);
         }

@@ -11,7 +11,7 @@
                     <small class="text-secondary ms-2">({{product.hours}}h)</small>
                 </div>
                 <div *ngIf="Auth()">
-                    <a href="" class="btn btn-success"><i class="bi bi-plus"> S'inscrire</i></a>
+                    <button class="btn btn-success" (click)="AddFormationToUser()"><i class="bi bi-plus"> S'inscrire</i></button>
                 </div>
             </div>
             <b class="text-success py-0 my-0">{{product.difficulty}}</b>

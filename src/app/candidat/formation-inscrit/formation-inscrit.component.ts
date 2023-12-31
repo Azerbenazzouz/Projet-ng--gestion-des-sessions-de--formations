@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { UserService } from './../../shared/service/user.service';
 import { FormationService } from '../../shared/service/formation.service';
 import { Iproduct } from '../../shared/model/iproduct';
+import { IUser } from '../../shared/model/iuser';
+import {  RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-formation-inscrit',
   standalone: true,
-  imports: [NavbarComponent,FooterComponent,CommonModule],
+  imports: [NavbarComponent,FooterComponent,CommonModule,RouterLink],
   templateUrl: './formation-inscrit.component.html',
   styleUrl: './formation-inscrit.component.css'
 })
@@ -18,18 +20,19 @@ import { Iproduct } from '../../shared/model/iproduct';
 export class FormationInscritComponent {
   formations : Iproduct[] = [];
 
-  constructor(private userS : UserService , private formationS : FormationService){}
+  constructor(private users : UserService , private formationS : FormationService){}
 
-  ngOnInit(){
-    let id = Number(localStorage.getItem("id"));
-    let a = this.userS.getAllSavedFormationId(id);
+  ngOnInit(): void {
+    this.users.getUSerById2(Number(localStorage.getItem('id'))).subscribe((data : IUser|undefined) => {
+      this.formationS.getByIds(data?.idSavedFormation).subscribe((data : Iproduct[]) => {
+        this.formations = data;
+      });
+    });
+    
+  }
 
-    let f = this.formationS.getByIds(a);
-
-    console.log(f)
-
-    if(f){
-      console.log(f)
-    }
+  getFormateurName (id : number){
+    // this.user.getAll();
+    return (this.users.getUserById(id)?.name)??"nom indisponible";
   }
 }

@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  providers: [FormationService,UserService],
+  providers: [FormationService,UserService,HttpClientModule],
   imports: [
     CommonModule,
     CandidatRoutingModule,

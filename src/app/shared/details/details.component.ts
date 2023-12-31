@@ -40,7 +40,7 @@ export class DetailsComponent {
     difficulty: 'beginner',
     tags: ['angular', 'javascript', 'html', 'css'],
     categories: ['web', 'mobile', 'desktop'],
-    idFormateur: [1, 2],
+    idFormateur: [1, 3],
     idCondidat: [1, 2],
     id: 1
   };
@@ -52,6 +52,11 @@ export class DetailsComponent {
   getFormateurName (id : number){
     // this.user.getAll();
     return (this.user.getUserById(id)?.name)??"nom indisponible";
+  }
+
+  AddFormationToUser(){
+    this.user.saveFormationToUser(Number(window.localStorage.getItem("id")),this.product.id);
+    // this.formation.userAddFormation(Number(window.localStorage.getItem("id")),this.product.id);
   }
   
 }
