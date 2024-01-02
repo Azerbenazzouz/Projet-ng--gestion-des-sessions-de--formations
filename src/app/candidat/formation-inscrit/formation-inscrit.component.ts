@@ -3,10 +3,8 @@ import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { CommonModule } from '@angular/common';
 
-import { UserService } from './../../shared/service/user.service';
 import { FormationService } from '../../shared/service/formation.service';
 import { Iproduct } from '../../shared/model/iproduct';
-import { IUser } from '../../shared/model/iuser';
 import {  RouterLink } from '@angular/router';
 import { ClientService } from '../../shared/service/client.service';
 import { Client } from '../../shared/model/client';

@@ -6,7 +6,6 @@ import { Iproduct } from './../model/iproduct';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormationService } from '../service/formation.service';
-import { UserService } from '../service/user.service';
 import { ClientService } from '../service/client.service';
 
 @Component({

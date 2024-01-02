@@ -1,5 +1,46 @@
 <app-navbar></app-navbar>
 <div class="container">
-    <p>mes-formations works!</p>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Mes Formation</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Difficulty</th>
+                    <th>Voir</th>
+                    <th>Inscrits</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let formation of formations" class="fs-6 fw-semibold">
+                    <td>{{ formation.title }}</td>
+                    <td>{{ formation.date }}</td>
+                    <td>{{ formation.difficulty }}</td>
+                    <td>
+                        <a routerLink="/formation/details/{{formation.id}}" class="btn btn-primary">Voir</a>
+                    </td>
+                    <td>
+                        <a routerLink="/formateur/modifierformation/{{formation.id}}" class="btn btn-warning">Les inscrits</a>
+                    </td>
+                    <td>
+                        <a routerLink="/formateur/modifierformation/{{formation.id}}" class="btn btn-success">Modifier</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="supprimerFormation(formation.id)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <ng-toast></ng-toast>
 </div>
 <app-footer></app-footer>
