@@ -2,37 +2,37 @@
 
 <div class="container">
     <h1 class="text-center mt-3">Ajouter une nouvelle formation</h1>
-    <form>
+    <form class="bg-body-tertiary p-2 p-sm-4 rounded-3" [formGroup]="creerFormationForm" (submit)="creerFormation()">
         <!-- titre -->
         <div class="mb-3">
             <label for="title" class="form-label">Titre de la formation</label>
-            <input type="text" class="form-control" id="title" aria-describedby="titleHelp">
+            <input type="text" class="form-control" id="title" aria-describedby="titleHelp" formControlName="title" required="true">
             <div id="titleHelp" class="form-text">Le titre de la formation doit être unique.</div>
         </div>
         <!-- date -->
         <div class="mb-3">
             <label for="date" class="form-label">Date de la formation</label>
-            <input type="date" class="form-control" id="date">
+            <input type="date" class="form-control" id="date" formControlName="date">
         </div>
         <!-- hours -->
         <div class="mb-3">
             <label for="hours" class="form-label">Nombre d'heures de la formation</label>
-            <input type="number" class="form-control" id="hours" min="1">
+            <input type="number" class="form-control" id="hours" min="1" formControlName="hours">
         </div>
         <!-- difficulté -->
         <div class="mb-3">
             <label for="difficulty" class="form-label">Difficulté de la formation</label>
-            <select class="form-select" id="difficulty">
+            <select class="form-select" id="difficulty" formControlName="difficulté">
                 <option selected>Choisir la difficulté</option>
-                <option value="1">Facile</option>
-                <option value="2">Moyen</option>
-                <option value="3">Difficile</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
             </select>
         </div>
         <!-- formateur -->
         <div class="mb-3">
             <label for="formateur" class="form-label">Formateur de la formation</label>
-            <select class="form-select" id="formateur">
+            <select class="form-select" id="formateur" formControlName="formateur">
                 <option selected>Choisir le formateur</option>
                 <option value="1">Formateur 1</option>
                 <option value="2">Formateur 2</option>
@@ -42,30 +42,40 @@
         <!-- image -->
         <div class="mb-3">
             <label for="image" class="form-label">Lien de l'image de la formation</label>
-            <input type="text" class="form-control" id="image">
+            <input type="text" class="form-control" id="image" formControlName="image">
         </div>
         <!-- program -->
         <div class="mb-3">
             <label for="program" class="form-label">Lien du programme de la formation</label>
-            <input type="text" class="form-control" id="program">
+            <input type="text" class="form-control" id="program" formControlName="program">
         </div>
         <!-- tags -->
         <div class="mb-3">
             <label for="tags" class="form-label">Tags de la formation séparer par virgule</label>
-            <input type="text" class="form-control" id="tags">
+            <input type="text" class="form-control" id="tags" formControlName="tags">
         </div>
         <!-- categories -->
         <div class="mb-3">
             <label for="categories" class="form-label">Catégories de la formation séparer par virgule</label>
-            <input type="text" class="form-control" id="categories">
+            <input type="text" class="form-control" id="categories" formControlName="categories">
         </div>
         <!-- description -->
         <div class="mb-3">
             <label for="description" class="form-label">Description de la formation</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
+            <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
         </div>
         <!-- submit -->
         <button type="submit" class="btn btn-success">Ajouter</button>
     </form>
+    <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Hello, world! This is a toast message.
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+      <ng-toast></ng-toast>
+      
 </div>
 <app-footer></app-footer>
