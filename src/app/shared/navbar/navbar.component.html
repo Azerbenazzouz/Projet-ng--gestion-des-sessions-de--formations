@@ -23,9 +23,9 @@
 
       </div>
       <!-- Ajouter Formation -->
-      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-plus-lg"></i></a>
+      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'" routerLink="/formateur/ajouterformation"><i class="bi bi-plus-lg"></i></a>
       <!-- Les Formation du formateur -->
-      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'"><i class="bi bi-book"></i></a>
+      <a class="btn btn-outline-success rounded-circle me-2" *ngIf="role =='formateur'" routerLink="/formateur/mesformations"><i class="bi bi-book"></i></a>
       <!-- Les Formation suivie par le candidat -->
       <a class="btn btn-outline-success rounded-circle me-2" routerLink="/condidat/formationinscrit"><i class="bi bi-bookmark-check-fill"></i></a>
       <!-- Login et SignUp -->

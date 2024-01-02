@@ -10,9 +10,9 @@ import { ClientService } from './../shared/service/client.service';
 
 @NgModule({
   declarations: [],
-  providers: [FormationService,UserService,HttpClientModule,ClientService],
+  providers: [FormationService,UserService,ClientService],
   imports: [
-  CommonModule,
+    CommonModule,
     CandidatRoutingModule,
     HttpClientModule
   ]
