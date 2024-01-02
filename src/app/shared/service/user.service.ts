@@ -23,8 +23,6 @@ export class UserService {
   constructor(private http : HttpClient , private formation : FormationService) { 
     this.http.get<IUser[]>(this.url,this.options).subscribe({
       next : (data : any) =>{
-        // console.log(data)
-        // this.users = [...data];
         this.users = [];
         data.forEach((element : IUser) => {
           this.users.push(element);
@@ -66,34 +64,34 @@ export class UserService {
     return this.users.find(user => user.id == id);
   }
 
-  getAllSavedFormationId(id : number) :  number[] | undefined{
-    let user = this.getUserById(id);
-    console.log(user)
-    if(!user){
-      return undefined;
-    }else{
-      console.log(user.idSavedFormation)
-      return user.idSavedFormation;
-    }
-  }
+  // getAllSavedFormationId(id : number) :  number[] | undefined{
+  //   let user = this.getUserById(id);
+  //   console.log(user)
+  //   if(!user){
+  //     return undefined;
+  //   }else{
+  //     console.log(user.idSavedFormation)
+  //     return user.idSavedFormation;
+  //   }
+  // }
 
-  saveFormationToUser(idUser : number, idFormation : number){
-    let idSavedFormation = this.getAllSavedFormationId(idUser)?? [];
-    if(idSavedFormation){
-      if(!idSavedFormation.includes(idFormation)){
-        idSavedFormation.push(idFormation);
-      }
-    }
+  // saveFormationToUser(idUser : number, idFormation : number){
+  //   let idSavedFormation = this.getAllSavedFormationId(idUser)?? [];
+  //   if(idSavedFormation){
+  //     if(!idSavedFormation.includes(idFormation)){
+  //       idSavedFormation.push(idFormation);
+  //     }
+  //   }
 
-    this.http.put(this.url + '/' + idUser, {
-      "idSavedFormation":idSavedFormation
-    }, this.options).subscribe({
-      next : (data : any) =>{
-        console.log(data);
-      this.formation.userAddFormation(idUser,idFormation);
+  //   this.http.put(this.url + '/' + idUser, {
+  //     "idSavedFormation":idSavedFormation
+  //   }, this.options).subscribe({
+  //     next : (data : any) =>{
+  //       console.log(data);
+  //     this.formation.userAddFormation(idUser,idFormation);
 
-      }
-    })
-  }
+  //     }
+  //   })
+  // }
 
 }

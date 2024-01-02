@@ -7,6 +7,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormationService } from '../service/formation.service';
 import { UserService } from '../service/user.service';
+import { ClientService } from '../service/client.service';
 
 @Component({
   selector: 'app-details',
@@ -17,7 +18,7 @@ import { UserService } from '../service/user.service';
 })
 export class DetailsComponent {  
   id : number;
-  constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService , private user: UserService) {
+  constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService , private user: ClientService) {
     this.id = this.route.snapshot.params['id'];
     const product = this.formation.getOne(this.id);
     if(product){
@@ -58,5 +59,14 @@ export class DetailsComponent {
     this.user.saveFormationToUser(Number(window.localStorage.getItem("id")),this.product.id);
     // this.formation.userAddFormation(Number(window.localStorage.getItem("id")),this.product.id);
   }
-  
+
+  UnAddFormationToUser(){
+    this.user.unsavedFormationToUser(Number(window.localStorage.getItem("id")),this.product.id);
+    // this.formation.userDeleteFormation(Number(window.localStorage.getItem("id")),this.product.id);
+  }
+
+  isSaved(): boolean{
+    return this.user.checkIfFormationIsSaved(Number(window.localStorage.getItem("id")),this.product.id);
+  }
+
 }

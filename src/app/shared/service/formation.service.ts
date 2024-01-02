@@ -55,16 +55,30 @@ export class FormationService {
 
   userAddFormation (id : number, idFormation : number){
     console.log(idFormation)
-    // let formation = this.getOne(idFormation);
+    let formation = this.getOne(idFormation);
 
-    // if(!formation?.idCondidat.includes(id)){
-    //   formation?.idCondidat.push(id);
-    // }
+    if(!formation?.idCondidat.includes(id)){
+      formation?.idCondidat.push(id);
+    }
 
-    // this.http.put(this.url + '/' + idFormation, {"idCondidat":[formation?.idCondidat]}, this.options).subscribe({
-    //   next : (data : any) =>{
-    //     console.log(data)
-    //   }
-    // })
+    this.http.put(this.url + '/' + idFormation, formation, this.options).subscribe({
+      next : (data : any) =>{
+        console.log(data)
+      }
+    })
+  }
+  userDeleteFormation (id : number, idFormation : number){
+    console.log(idFormation)
+    let formation = this.getOne(idFormation);
+
+    if(formation?.idCondidat.includes(id)){
+      formation?.idCondidat.splice(formation?.idCondidat.indexOf(id),1);
+    }
+
+    this.http.put(this.url + '/' + idFormation, formation, this.options).subscribe({
+      next : (data : any) =>{
+        console.log(data)
+      }
+    })
   }
 }

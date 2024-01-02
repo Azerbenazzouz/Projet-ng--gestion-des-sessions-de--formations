@@ -9,11 +9,12 @@ import { RegisterService } from './service/register.service';
 import { LoginService } from './service/login.service';
 import { FormationService } from './service/formation.service';
 import { UserService } from './service/user.service';
+import { ClientService } from './service/client.service';
 
 
 @NgModule({
   declarations: [],
-  providers: [RegisterService,LoginService,FormationService,UserService],
+  providers: [RegisterService,LoginService,FormationService,UserService,ClientService],
   imports: [
     CommonModule,
     SharedRoutingModule,

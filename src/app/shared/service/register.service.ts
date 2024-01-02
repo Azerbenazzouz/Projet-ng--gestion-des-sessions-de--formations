@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 import { RegisterDTO } from '../model/register-dto';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { UserService } from './user.service';
+import { ClientService } from './client.service';
+import { IUser } from './../model/iuser';
+import { ILogin } from '../model/ilogin';
+import { LoginDto } from '../model/login-dto';
+import { Client } from '../model/client';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +20,7 @@ export class RegisterService {
   
   url : string = "http://localhost:3000/users/signup";
   
-  constructor(private http : HttpClient, private router:Router,private user : UserService) { }
+  constructor(private http : HttpClient, private router:Router,private client : ClientService) { }
 
   // valideEmail = async(email : string)=>{
   //   let res: boolean = true;
@@ -54,9 +58,9 @@ export class RegisterService {
   }
 
   // register will send a POST request to the server to register a new user.
-  register = (nom : string , telephone : string , email : string , password : string , role : string)=>{
+  register = (name : string , telephone : string , email : string , password : string , role : string)=>{
     this.http.post<RegisterDTO>(this.url , 
-      { nom , 
+      { name , 
         telephone , 
         email , 
         password , 
@@ -64,8 +68,13 @@ export class RegisterService {
       } , this.options
     ).subscribe({
       next :
-        (result) => {
-          console.log(result);
+        (result : RegisterDTO) => {
+
+          this.client.addClient(result.user).subscribe({
+            next : (result : Client) => {
+              // console.log(result);
+            }
+          });
           // window.localStorage.setItem('accessToken', result.accessToken);
           this.router.navigate(['login']);
         }

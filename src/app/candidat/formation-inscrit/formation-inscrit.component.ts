@@ -8,6 +8,8 @@ import { FormationService } from '../../shared/service/formation.service';
 import { Iproduct } from '../../shared/model/iproduct';
 import { IUser } from '../../shared/model/iuser';
 import {  RouterLink } from '@angular/router';
+import { ClientService } from '../../shared/service/client.service';
+import { Client } from '../../shared/model/client';
 
 @Component({
   selector: 'app-formation-inscrit',
@@ -20,10 +22,10 @@ import {  RouterLink } from '@angular/router';
 export class FormationInscritComponent {
   formations : Iproduct[] = [];
 
-  constructor(private users : UserService , private formationS : FormationService){}
+  constructor(private users : ClientService , private formationS : FormationService){}
 
   ngOnInit(): void {
-    this.users.getUSerById2(Number(localStorage.getItem('id'))).subscribe((data : IUser|undefined) => {
+    this.users.getUSerById2(Number(localStorage.getItem('id'))).subscribe((data : Client|undefined) => {
       this.formationS.getByIds(data?.idSavedFormation).subscribe((data : Iproduct[]) => {
         this.formations = data;
       });
