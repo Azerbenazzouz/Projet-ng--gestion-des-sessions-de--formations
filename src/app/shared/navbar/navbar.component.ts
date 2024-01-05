@@ -1,7 +1,8 @@
-import { Component, Output , EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { FormationService } from '../service/formation.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  motCles : string[] = ["angular","javascript","html","css","azer"];
+  motCles? : string[] ;
   
   isAuth : boolean = false;
   role : string = "";
 
-  constructor( private route : Router ) {}
+  constructor( private route : Router ,private formation : FormationService) {}
   searchForm = new FormGroup({
     search: new FormControl('')
   });
@@ -25,8 +26,11 @@ export class NavbarComponent {
     if(localStorage.getItem('accessToken')) {
       this.isAuth = true;
       this.role = localStorage.getItem('role')??'';
-
     }
+    this.formation.getAllTags().subscribe( (data : any) => {
+      this.motCles = data;
+    }
+    );
   }
   
   searchSubmit() {    

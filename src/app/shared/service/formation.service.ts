@@ -81,4 +81,20 @@ export class FormationService {
       }
     })
   }
+
+  getAllTags(): Observable<string[]>{
+    return this.http.get(this.url).pipe(
+      map((data : any) => {
+        let tags : string[] = [];
+        data.forEach((element : Iproduct) => {
+          element.tags.forEach(tag => {
+            if(!tags.includes(tag)){
+              tags.push(tag);
+            }
+          });
+        });
+        return tags;
+      })
+    );
+  }
 }
