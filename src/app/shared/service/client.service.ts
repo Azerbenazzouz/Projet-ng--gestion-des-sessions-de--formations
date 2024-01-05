@@ -121,4 +121,16 @@ export class ClientService {
       }
     });
   }
+
+  getAllFormateur() : Observable<Client[]>{
+    return this.http.get<Client[]>(this.url,this.options).pipe(
+      map((data : any) => {
+        let users : Client[] = [];
+        data.forEach((element : Client) => {
+          users.push(element);
+        });
+        return users.filter(user => user.role == "formateur");
+      })
+    );
+  }
 }

@@ -7,6 +7,8 @@ import { FormControl , FormGroup , ReactiveFormsModule, Validators } from '@angu
 import { NgToastModule, NgToastService } from 'ng-angular-popup';
 import { FormationFService } from '../service/formation-f.service';
 import { FormationDTO } from '../model/formation-dto';
+import { Client } from '../../shared/model/client';
+import { ClientService } from '../../shared/service/client.service';
 
 @Component({
   selector: 'app-creer-formation',
@@ -16,10 +18,20 @@ import { FormationDTO } from '../model/formation-dto';
   styleUrl: './creer-formation.component.css'
 })
 export class CreerFormationComponent {
+  formateurs : Client[] = []
+  constructor(private toast : NgToastService , private FormationF : FormationFService , private clientService : ClientService) {}
 
-  constructor(private toast : NgToastService , private FormationF : FormationFService) {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.clientService.getAllFormateur().subscribe({
+      next : (data : Client[]) => {
+        data.forEach((element : Client) => {
+          if(Number(localStorage.getItem('id')) != element.id){
+            this.formateurs.push(element);
+          }
+        });
+      }
+    });
+  }
 
   creerFormationForm = new FormGroup({
     title : new FormControl('',Validators.required),

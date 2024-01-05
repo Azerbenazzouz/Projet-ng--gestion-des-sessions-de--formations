@@ -64,4 +64,15 @@ export class FormationFService {
     );
   }
   
+  editFormation(idFormation : number,formation : FormationDTO){
+    this.http.put<FormationDTO>(this.url+ "/" + idFormation,formation,this.options).subscribe({  
+      next : (result : FormationDTO) => {
+        console.log(result);
+        this.router.navigate(['/formateur/mesformations']);
+      },
+      error : (err : any) => {
+        console.log(err);
+      }
+    });
+  }
 }

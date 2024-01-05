@@ -32,9 +32,7 @@
         <div class="mb-3">
             <label for="formateur" class="form-label">Formateur de la formation</label>
             <select class="form-select" id="formateur" formControlName="formateur">
-                <option value="1">Formateur 1</option>
-                <option value="2">Formateur 2</option>
-                <option value="3">Formateur 3</option>
+                <option value={{f.id}} *ngFor="let f of formateurs">{{f.name}}</option>
             </select>
         </div>
         <!-- image -->
@@ -68,12 +66,11 @@
     <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
           <div class="toast-body">
-            Hello, world! This is a toast message.
+            <!-- Hello, world! This is a toast message. -->
           </div>
           <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
       </div>
       <ng-toast></ng-toast>
-      
-</div>
+    </div>
 <app-footer></app-footer>

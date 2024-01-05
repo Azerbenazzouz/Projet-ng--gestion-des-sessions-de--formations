@@ -37,6 +37,14 @@ export class FormationService {
     return this.formations.find(formation => formation.id == id);
   }
 
+  getOne2 (id : number): Observable<Iproduct>{
+    return this.http.get(this.url + '/' + id).pipe(
+      map((data : any) => {
+        return data;
+      })
+    );
+  }
+
   getByIds (idList : number[] | undefined): Observable<Iproduct[]>{
     return this.http.get(this.url).pipe(
       map((data : any) => {
