@@ -75,4 +75,20 @@ export class FormationFService {
       }
     });
   }
+
+  getAllCondidat(idFormation : number): Observable<number[]>{
+    return this.http.get(this.url).pipe(
+      map((data : any) => {
+        let condidat : number[] = [];
+        data.forEach((element : Iproduct) => {
+          element.idCondidat.forEach(id => {
+            if(!condidat.includes(idFormation)){
+              condidat.push(id);
+            }
+          });
+        });
+        return condidat;
+      })
+    );
+  }
 }

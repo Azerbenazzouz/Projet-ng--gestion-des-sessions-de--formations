@@ -52,6 +52,22 @@ export class ClientService {
     return this.users.find(user => user.id == id);
   }
 
+  getUsersByIds (idList : number[] | undefined): Observable<Client[]>{
+    return this.http.get(this.url).pipe(
+      map((data : any) => {
+        this.users = [];
+        data.forEach((element : Client) => {
+          this.users.push(element);
+        });
+        if(idList){
+          return [...this.users.filter(user => idList.includes(user.id))];
+        }else{
+          return [];
+        }
+      })
+    );
+  }
+
   getAllSavedFormationId(id : number) :  number[] | undefined{
     let user = this.getUserById(id);
     if(!user){
@@ -130,6 +146,14 @@ export class ClientService {
           users.push(element);
         });
         return users.filter(user => user.role == "formateur");
+      })
+    );
+  }
+
+  getProfileImg(id : string): Observable<string>{
+    return this.http.get(this.url + '/' + id,this.options).pipe(
+      map((data : any) => {
+        return data.img;
       })
     );
   }

@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { FormationComponent } from './formation/formation.component';
 import { DetailsComponent } from './details/details.component';
 import { authGuard } from './guard/auth.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { SettingsComponent } from './settings/settings.component';
 
 // , canActivate : [!authGuard]
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'formation/categorie' , component: FormationComponent},
   { path: 'formation/categorie/:cat' , component: FormationComponent},
   { path: 'formation/details' , component: FormationComponent},
-  { path: 'formation/details/:id' , component: DetailsComponent}
+  { path: 'formation/details/:id' , component: DetailsComponent},
+  { path: 'profile/:id', component: ProfileComponent},
+  { path: 'setting' , component: SettingsComponent}
 ];
 
 @NgModule({

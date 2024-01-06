@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormControl , FormGroup , ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormationService } from '../service/formation.service';
+import { ClientService } from '../service/client.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,11 +14,11 @@ import { FormationService } from '../service/formation.service';
 })
 export class NavbarComponent {
   motCles? : string[] ;
-  
+  profileImg? : string = "https://github.com/mdo.png";
   isAuth : boolean = false;
   role : string = "";
-
-  constructor( private route : Router ,private formation : FormationService) {}
+  id : number = 0;
+  constructor( private route : Router ,private formation : FormationService,private clientService : ClientService) {}
   searchForm = new FormGroup({
     search: new FormControl('')
   });
@@ -26,6 +27,10 @@ export class NavbarComponent {
     if(localStorage.getItem('accessToken')) {
       this.isAuth = true;
       this.role = localStorage.getItem('role')??'';
+      this.id = Number(localStorage.getItem('id'));
+      this.clientService.getProfileImg(this.id.toString()).subscribe((data : any) => {
+        if(data != null) this.profileImg = data;
+      });
     }
     this.formation.getAllTags().subscribe( (data : any) => {
       this.motCles = data;

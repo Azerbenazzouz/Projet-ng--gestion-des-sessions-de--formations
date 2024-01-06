@@ -1,1 +1,32 @@
-<p>lister-mes-inscrit works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">List des condidat inscrit</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of condidat;index as i" class="fs-6 fw-semibold">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.email }}</td>
+                    <td>{{ c.telephone }}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

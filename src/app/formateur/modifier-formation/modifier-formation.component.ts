@@ -84,8 +84,7 @@ export class ModifierFormationComponent {
           if(id != Number(localStorage.getItem('id'))){
             f = id.toString();
           }
-        }
-        );
+        });
         this.editFormationForm.setValue({
           title : data.title,
           date : data.date,

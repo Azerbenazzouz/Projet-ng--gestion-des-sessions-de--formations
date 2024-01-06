@@ -34,13 +34,14 @@
       <!-- Profile , Settings et deconnecter -->
       <div class="dropdown text-end" *ngIf="isAuth">
         <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="https://github.com/mdo.png" alt="mdo" width="38" height="38" class="rounded-circle">
+          <img src={{profileImg}} alt="mdo" width="38" height="38" class="rounded-circle">
+
         </a>
         <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/setting">Settings</a></li>
+          <li><a class="dropdown-item" routerLink="/profile/{{this.id}}">Profile</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" (click)="logout()">Déconnecter</a></li>
+          <li><button class="dropdown-item" (click)="logout()">Déconnecter</button></li>
         </ul>
       </div>
     </div>

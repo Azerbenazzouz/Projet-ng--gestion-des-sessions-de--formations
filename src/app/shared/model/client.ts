@@ -6,4 +6,5 @@ export interface Client {
     img?:string;
     idSavedFormation?: number[];
     id: number;
+    adress?: string;
 }
