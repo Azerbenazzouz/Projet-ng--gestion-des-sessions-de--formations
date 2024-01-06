@@ -1,1 +1,43 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Profile</h1>
+
+    <div class="row">
+        <div class="col-6 d-flex justify-content-center align-item-center">
+            <img src="https://github.com/mdo.png" class="rounded-circle" alt="" srcset="">
+        </div>
+        <div class="col-6">
+            <form>
+                <div class="mb-3 mt-5">
+                    <label for="name" class="mb-2">
+                        Nom complet :
+                    </label>
+                    <input type="text" class="form-control" id="name" placeholder="Foulan Foulani"  formControlName="name">
+                </div>
+
+                <div class="mb-3">
+                    <label for="telephone" class="mb-2">
+                        Telephone :
+                    </label>
+                    <input type="text" class="form-control" id="telephone" placeholder="55 555 555"  formControlName="telephone">
+                </div>
+        
+                <div class="mb-3">
+                    <label for="email" class="mb-2">
+                        Adress email :
+                    </label>
+                    <input type="email" class="form-control" id="email" placeholder="foulan.foulani@gmail.com"  formControlName="email">
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="mb-2">
+                        Profile image :
+                    </label>
+                    <input type="text" class="form-control" id="name" placeholder="https://www.img.com"  formControlName="img">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
+

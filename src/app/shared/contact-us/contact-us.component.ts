@@ -4,12 +4,12 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-contact-us',
   standalone: true,
   imports: [FooterComponent,NavbarComponent,CommonModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  templateUrl: './contact-us.component.html',
+  styleUrl: './contact-us.component.css'
 })
-export class ProfileComponent {
+export class ContactUsComponent {
 
 }

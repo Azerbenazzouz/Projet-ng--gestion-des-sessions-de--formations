@@ -9,6 +9,7 @@ import { DetailsComponent } from './details/details.component';
 import { authGuard } from './guard/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 // , canActivate : [!authGuard]
 const routes: Routes = [
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'formation/details' , component: FormationComponent},
   { path: 'formation/details/:id' , component: DetailsComponent},
   { path: 'profile/:id', component: ProfileComponent},
-  { path: 'setting' , component: SettingsComponent}
+  { path: 'setting' , component: SettingsComponent},
+  { path: 'contacternous' , component: ContactUsComponent},
+  { path: '**' , component: HomeComponent}
 ];
 
 @NgModule({

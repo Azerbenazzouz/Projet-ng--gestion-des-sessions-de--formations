@@ -1,1 +1,111 @@
-<p>settings works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Setting</h1>
+    <hr>
+    <h3>Changer Mes Information </h3>
+
+    <form>
+        <div class="mb-3 mt-5">
+            <label for="name" class="mb-2">
+                Nom complet :
+            </label>
+            <input type="text" class="form-control" id="name" placeholder="Foulan Foulani"  formControlName="name">
+        </div>
+
+        <div class="mb-3">
+            <label for="telephone" class="mb-2">
+                Telephone :
+            </label>
+            <input type="text" class="form-control" id="telephone" placeholder="55 555 555"  formControlName="telephone">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="mb-2">
+                Adress email :
+            </label>
+            <input type="email" class="form-control" id="email" placeholder="foulan.foulani@gmail.com"  formControlName="email">
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="mb-2">
+                Profile image :
+            </label>
+            <input type="text" class="form-control" id="name" placeholder="https://www.img.com"  formControlName="img">
+        </div>
+
+        <!-- save -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+    </form>
+
+    <h3>Changer role : </h3>
+
+    <form>
+        <div class="mb-3 mt-5">
+            <label for="name" class="mb-2">
+                Role :
+            </label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                <option value="formateur">Formateur</option>
+                <option value="candidat">Candidat</option>
+            </select>
+        </div>
+
+        <!-- save -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+    </form>
+
+    <h3>Changer la Mot de passe : </h3>
+
+    <form>
+        <div class="mb-3 mt-5">
+            <label for="name" class="mb-2">
+                Ancien Mot de passe :
+            </label>
+            <input type="password" class="form-control" id="name" placeholder="********"  formControlName="name">
+        </div>
+
+        <div class="mb-3">
+            <label for="telephone" class="mb-2">
+                Nouveau Mot de passe :
+            </label>
+            <input type="password" class="form-control" id="telephone" placeholder="********"  formControlName="telephone">
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="mb-2">
+                Confirmer le Mot de passe :
+            </label>
+            <input type="password" class="form-control" id="email" placeholder="********"  formControlName="email">
+        </div>
+
+        <!-- save -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+    </form>
+
+    <h3>Changer Email</h3>
+
+    <form>
+        <div class="mb-3">
+            <label for="telephone" class="mb-2">
+                Nouveau Email :
+            </label>
+            <input type="email" class="form-control" id="telephone" placeholder="foulan.foulani@gmail.com" formControlName="email">
+
+        </div>
+
+        <!-- save -->
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+        </div>
+    </form>
+
+</div>
+<app-footer></app-footer>
+
