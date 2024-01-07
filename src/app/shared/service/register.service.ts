@@ -58,9 +58,10 @@ export class RegisterService {
   }
 
   // register will send a POST request to the server to register a new user.
-  register = (name : string , telephone : string , email : string , password : string , role : string)=>{
+  register = (name : string ,cin : string, telephone : string , email : string , password : string , role : string)=>{
     this.http.post<RegisterDTO>(this.url , 
       { name , 
+        cin ,
         telephone , 
         email , 
         password , 

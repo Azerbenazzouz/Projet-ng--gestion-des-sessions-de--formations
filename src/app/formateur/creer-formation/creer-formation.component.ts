@@ -38,7 +38,7 @@ export class CreerFormationComponent {
     date : new FormControl('',Validators.required),
     hours : new FormControl('',Validators.required),
     difficulté : new FormControl('',Validators.required),
-    formateur : new FormControl('',Validators.required),
+    formateur : new FormControl('',Validators.nullValidator),
     image : new FormControl('',Validators.required),
     program : new FormControl('',Validators.required),
     tags : new FormControl('',Validators.required),
@@ -65,6 +65,7 @@ export class CreerFormationComponent {
         description : this.creerFormationForm.value.description??"",
       }
       this.FormationF.addFormation(formation);
+      
     }
   }
 }

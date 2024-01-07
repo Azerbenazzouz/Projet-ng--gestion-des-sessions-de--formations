@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 export class RegisterComponent {
   errors: IRegister = {
     name: '',
+    cin: '',
     telephone: '',
     email: '',
     password: '',
@@ -33,6 +34,7 @@ export class RegisterComponent {
   
   registerForm = new FormGroup({
     name : new FormControl('',Validators.required),
+    cin: new FormControl('',{validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8) , Validators.pattern("^[0-9]*$")]}),
     telephone: new FormControl('',{validators: [Validators.required, Validators.minLength(8), Validators.maxLength(8) , Validators.pattern("^[0-9]*$")]}),
     email: new FormControl('', {validators: [Validators.required, Validators.email]}),
     password: new FormControl('',Validators.required),
@@ -45,6 +47,7 @@ export class RegisterComponent {
         if(isValid){
           this.RegisterService.register(
             this.registerForm.controls.name.value??'',
+            this.registerForm.controls.cin.value??'',
             this.registerForm.controls.telephone.value??'',
             this.registerForm.controls.email.value??'',
             this.registerForm.controls.password.value??'',
@@ -61,6 +64,10 @@ export class RegisterComponent {
         this.errors.name = 'Inserer un nom valide';
       }else{
         this.errors.name = '';
+      }
+      // cin
+      if(this.registerForm.controls.cin.invalid){
+        this.errors.cin = 'Inserer un cin valide';
       }
       // telephone
       if(this.registerForm.controls.telephone.invalid){

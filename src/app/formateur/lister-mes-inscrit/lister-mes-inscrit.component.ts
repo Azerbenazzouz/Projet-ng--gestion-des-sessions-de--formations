@@ -32,6 +32,7 @@ export class ListerMesInscritComponent {
         this.ClientService.getUsersByIds(data).subscribe({
           next : (data : Client[]) => {
             this.condidat = data;
+            console.log(this.condidat);
           }
         })
       }

@@ -81,11 +81,9 @@ export class FormationFService {
       map((data : any) => {
         let condidat : number[] = [];
         data.forEach((element : Iproduct) => {
-          element.idCondidat.forEach(id => {
-            if(!condidat.includes(idFormation)){
-              condidat.push(id);
-            }
-          });
+          if(element.id == idFormation){
+            condidat = element.idCondidat;
+          }
         });
         return condidat;
       })

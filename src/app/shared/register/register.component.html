@@ -12,6 +12,14 @@
         </div>
 
         <div class="mb-3">
+            <label for="name" class="mb-2">
+                Numero carte d'identité :
+            </label>
+            <input type="text" class="form-control" id="name" placeholder="01111111"  formControlName="cin">
+            <h6 class="text-danger mt-2" *ngIf="errors.cin"> {{errors.name}} </h6>
+        </div>
+
+        <div class="mb-3">
             <label for="telephone" class="mb-2">
                 Telephone :
             </label>

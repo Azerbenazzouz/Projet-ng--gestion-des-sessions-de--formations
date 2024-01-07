@@ -95,6 +95,7 @@ export class ClientService {
       if(data){
         let u : Client = {
           name : data.name,
+          cin : data.cin,
           telephone : data.telephone,
           email : data.email,
           role : data.role,
@@ -121,6 +122,7 @@ export class ClientService {
       if(data){
         let u : Client = {
           name : data.name,
+          cin : data.cin,
           telephone : data.telephone,
           email : data.email,
           role : data.role,

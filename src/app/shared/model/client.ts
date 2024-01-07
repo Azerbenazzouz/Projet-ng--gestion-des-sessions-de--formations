@@ -1,5 +1,6 @@
 export interface Client {
     name: string;
+    cin: string;
     telephone: string;
     email: string;
     role: string;
