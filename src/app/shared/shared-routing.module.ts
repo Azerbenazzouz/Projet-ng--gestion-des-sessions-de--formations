@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent},
   { path: 'setting' , component: SettingsComponent},
   { path: 'contacternous' , component: ContactUsComponent},
-  { path: '**' , component: HomeComponent}
 ];
 
 @NgModule({
