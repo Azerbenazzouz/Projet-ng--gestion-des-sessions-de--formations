@@ -5,38 +5,39 @@
     <div class="row ">
         <div class="col-sm-12 col-md-6 d-flex justify-content-center align-item-center">
             <!-- Profile image -->
-            <img src="https://github.com/mdo.png" class="rounded-circle" alt="" srcset="">
+            <img src={{client?.img}} *ngIf="client?.img" class="rounded-circle" alt="" srcset="">
+            <h3 class="text-center text-danger mt-5" *ngIf="!client?.img">Pas de photo de profile clicker sur changer mes inforamation pour changer votre image...</h3>
         </div>
         <div class="col-sm-12 col-md-6">
             <!-- Nom complet -->
             <div class="mb-3 mt-5">
                 <h5 class="mb-2">
-                    Nom complet : <span class="text-primary">Foulan Foulani</span>
+                    Nom complet : <span class="text-primary">{{client?.name}}</span>
                 </h5>
             </div>
             <!-- Numero du carte d'identité -->
             <div class="mb-3 mt-3">
                 <h5 class="mb-2">
-                    Numero du carte d'identité : <span class="text-primary">14668040</span>
+                    Numero du carte d'identité : <span class="text-primary">{{client?.cin}}</span>
                 </h5>
             </div>
             <!-- Telephone -->
             <div class="mb-3 mt-3">
                 <h5 class="mb-2">
-                    Telephone : <span class="text-primary">55 555 555</span>
+                    Telephone : <span class="text-primary">{{client?.telephone}}</span>
                 </h5>
             </div>
             <!-- Adress email -->
             <div class="mb-3 mt-3">
                 <h5 class="mb-2">
-                    Adress email : <span class="text-primary">foulan.foulani&#64;gmail.com</span>
+                    Adress email : <span class="text-primary">{{client?.email}}</span>
                 </h5>
             </div>
             <!-- Date de naissance -->
             <!-- Role -->
             <div class="mb-3 mt-3">
                 <h5 class="mb-2">
-                    Role : <span class="text-primary">Condidat</span>
+                    Role : <span class="text-primary">{{client?.role}}</span>
                 </h5>
             </div>
             <!-- Changer Mes information -->
