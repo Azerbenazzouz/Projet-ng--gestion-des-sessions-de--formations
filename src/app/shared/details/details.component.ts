@@ -17,11 +17,13 @@ import { ClientService } from '../service/client.service';
 })
 export class DetailsComponent {  
   id : number;
+  EnableFormation : boolean = true;
   constructor( private route : ActivatedRoute, private router : Router, private formation : FormationService , private user: ClientService) {
     this.id = this.route.snapshot.params['id'];
     const product = this.formation.getOne(this.id);
     if(product){
       this.product = product;
+      this.EnableFormation = this.product.idCondidat.length > 15;
     }else{
       this.router.navigate(['/formation']);
     }

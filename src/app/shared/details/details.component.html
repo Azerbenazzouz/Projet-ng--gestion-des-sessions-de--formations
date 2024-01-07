@@ -2,44 +2,44 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 mx-auto d-block">
-            <img src={{product.image}} alt={{product.title}} class="img-fluid img-thumbnail w-100" >
+            <img src={{product?.image}} alt={{product?.title}} class="img-fluid img-thumbnail w-100" >
         </div>
         <div class="col-md-6">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
-                    <h1>{{product.title}}</h1>
-                    <small class="text-secondary ms-2">({{product.hours}}h)</small>
+                    <h1>{{product?.title}}</h1>
+                    <small class="text-secondary ms-2">({{product?.hours}}h)</small>
                 </div>
                 <div *ngIf="Auth()">
-                    <button class="btn btn-success" *ngIf="!isSaved()" (click)="AddFormationToUser()"><i class="bi bi-plus"> S'inscrire</i></button>
+                    <button class="btn btn-success" *ngIf="!isSaved()" [ngClass]="{'disabled':EnableFormation}" (click)="AddFormationToUser()"><i class="bi bi-plus"> S'inscrire</i></button>
                     <button class="btn btn-danger" *ngIf="isSaved()" (click)="UnAddFormationToUser()"><i class="bi bi-dash"> Désinscrire</i></button>
                 </div>
             </div>
-            <b class="text-success py-0 my-0">{{product.difficulty}}</b>
+            <b class="text-success py-0 my-0">{{product?.difficulty}}</b>
             <div class="d-flex py-0 mt-3">
                 <p class="text-secondary">Par : </p>
                 <ul class="list-unstyled ms-2 py-0 my-0">
-                    <span *ngFor="let f of product.idFormateur">
+                    <span *ngFor="let f of product?.idFormateur">
                         <li *ngIf="getFormateurName(f)!='nom indisponible'" class="fw-semibold"> {{getFormateurName(f)}}</li>
                     </span>
                 </ul>
             </div>
-            <b class="mt-3">Date de formation : <span class="text-danger">{{product.date}}</span></b>
-            <p>{{product.description}}</p>
+            <b class="mt-3">Date de formation : <span class="text-danger">{{product?.date}}</span></b>
+            <p>{{product?.description}}</p>
             <div class="d-flex justify-content-end my-3">
-                <a *ngIf="isSaved()" href="{{product.program}}" target="_blank" class="btn btn-warning end"><i class="bi bi-file-earmark-pdf"></i> Program</a>
+                <a *ngIf="isSaved()" href="{{product?.program}}" target="_blank" class="btn btn-warning end"><i class="bi bi-file-earmark-pdf"></i> Program</a>
             </div>
             <div class="row">
                 <div class="col-6">
                     <h4>Tags</h4>
                     <ul>
-                        <li *ngFor="let tag of product.tags">{{tag}}</li>
+                        <li *ngFor="let tag of product?.tags">{{tag}}</li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <h4>categories</h4>
                     <ul>
-                        <li *ngFor="let cat of product.categories">{{cat}}</li>
+                        <li *ngFor="let cat of product?.categories">{{cat}}</li>
                     </ul>
                 </div>
             </div>
