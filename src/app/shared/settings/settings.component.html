@@ -27,13 +27,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="email" class="mb-2">
-                Adress email :
-            </label>
-            <input type="email" class="form-control" id="email" placeholder="foulan.foulani@gmail.com"  formControlName="email">
-        </div>
-
-        <div class="mb-3">
             <label for="name" class="mb-2">
                 Profile image :
             </label>
@@ -46,7 +39,7 @@
         </div>
     </form>
 
-    <h3>Changer la Mot de passe : </h3>
+    <h3>Changer la Mot de passe : <samp class="text-danger">Indisponible</samp></h3>
 
     <form [formGroup]="MdpChangeForm" (submit)="changerPassword()">
         <div class="mb-3 mt-3">
@@ -76,7 +69,7 @@
         </div>
     </form>
 
-    <h3>Changer Email</h3>
+    <h3>Changer Email <samp class="text-danger">Indisponible</samp></h3>
 
     <form [formGroup]="EmailChangerForm" (submit)="changerEmail()">
         <div class="mb-3">
@@ -99,5 +92,6 @@
         </div>
     </form>
 </div>
+<ng-toast></ng-toast>
 <app-footer></app-footer>
 

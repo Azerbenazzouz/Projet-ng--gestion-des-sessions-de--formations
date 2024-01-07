@@ -132,7 +132,6 @@ export class ClientService {
         }
         this.http.put(this.url + '/' + idUser, u, this.options).subscribe({
           next : (data : any) =>{
-            // console.log(data);
             this.formation.userDeleteFormation(idUser,idFormation)
           }
         })
@@ -159,4 +158,14 @@ export class ClientService {
       })
     );
   }
+
+  changeInformation(id : number, client : Client) : Observable<Client>{
+    return this.http.put<Client>(this.url + '/' + id,client,this.options).pipe(
+      map((data : any) => {
+        return data;
+      })
+    );
+  }
+
+
 }
