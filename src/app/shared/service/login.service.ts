@@ -44,4 +44,7 @@ export class LoginService {
     return localStorage.getItem('accessToken') != null;
   }
 
+  role = () : string => {
+    return localStorage.getItem('role')??'';
+  }
 }
