@@ -3,4 +3,5 @@ export interface ICarouselCategorie {
     name: string;
     description: string;
     image: string;
+    lien: string;
 }
