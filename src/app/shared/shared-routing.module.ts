@@ -25,10 +25,14 @@ const AuthGuard = () : boolean => {
   return !loginService.isAuthenticated();
 }
 
-const condidatGuard = () : boolean => {
+const isAuthGuard = () : boolean => {
   const loginService = inject(LoginService);
   const router = inject(Router);
-  return loginService.role() == 'condidat';
+
+  if(!loginService.isAuthenticated()){
+    router.navigate(['login']);
+  }
+  return loginService.isAuthenticated();
 }
 
 const routes: Routes = [
@@ -41,10 +45,9 @@ const routes: Routes = [
   { path: 'formation/categorie/:cat' , component: FormationComponent},
   { path: 'formation/details' , component: FormationComponent},
   { path: 'formation/details/:id' , component: DetailsComponent},
-  { path: 'profile/:id', component: ProfileComponent},
-  { path: 'setting' , component: SettingsComponent},
-  { path: 'contacternous' , component: ContactUsComponent},
-  { path: '**' , component: HomeComponent},
+  { path: 'profile/:id', component: ProfileComponent , canActivate : [isAuthGuard]},
+  { path: 'setting' , component: SettingsComponent , canActivate : [isAuthGuard]},
+  { path: 'contacternous' , component: ContactUsComponent , canActivate : [isAuthGuard]},
   { path: '' , redirectTo: 'home' , pathMatch: 'full'}
 ];
 
