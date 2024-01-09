@@ -52,6 +52,12 @@ export class ProductComponent {
   ngOnInit(): void {
   }
 
-  
+  ParagraphWordsLimit(text: string, limit: number): string {
+    let words = text.split(' ');
+    if(words.length > limit){
+      return words.slice(0,limit).join(' ') + '...';
+    }
+    return text;
+  }
   
 }

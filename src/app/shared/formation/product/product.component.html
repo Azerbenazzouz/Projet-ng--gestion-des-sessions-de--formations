@@ -2,11 +2,13 @@
     <img src={{product.image}} class="card-img-top text-bg-light" alt={{product.title}}>
     <div class="card-body">
       <h5 class="card-title">{{product.title}} <span class="h6 text-secondary">( {{product.hours}}h )</span></h5>
-      <p class="card-text">{{product.description}}</p>
+      <p class="card-text">{{ParagraphWordsLimit(product.description,25)}}</p>
       <h6>
         Les formateurs : <br>
         <span *ngFor="let F of product.idFormateur;let i = index">
-            <span *ngIf="i > 0" class="">/</span> {{getUserById(F)}} 
+            <span *ngIf="getUserById(F) != 'nom indisponible'" class="badge rounded-pill bg-info mt-2 me-2 p-2">
+                 {{getUserById(F)}} 
+            </span>
         </span>
         </h6>
     </div>
